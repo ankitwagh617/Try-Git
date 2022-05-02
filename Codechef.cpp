@@ -1,24 +1,45 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int32_t main()
+#define int long long
+#define pb push_back
+#define loop(i,n) for(int i=0;i<n;i++)
+
+long long lcm(int a,int b)
 {
-    // your code goes here
-	// cout<<"abcdefu"<<endl;
-    ios_base::sync_with_stdio(false);
+    int g = gcd(a,b);
+    return (a*b)/g;
+}
+
+int32_t main() {
+	// your code goes here
+	ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+    cout.tie(NULL);
 	int tc;
 	cin>>tc;
 	while(tc--)
 	{
-	    int n,m;
-	    cin>>n>>m;
-		int x1,y1,x2,y2;
-		cin>>x1>>y1>>x2>>y2;
-		int arr[n][m];
-		arr[x1-1][y1-1] = 1 ;
-		arr[x2-1][y2-1] = 2 ; 	
-	    
+	    int n,r; cin>>n>>r;
+	    int arr_r[n];
+	    int arr_c[n];
+	    loop(i,n) cin>>arr_r[i];
+	    loop(i,n) cin>>arr_c[i];
+	    // int min_diff =abs( arr_r[0] - arr_c[0]);
+        map<int,int> m;
+	    for(int i = 0 ;i<n;i++)
+	    {
+            m.insert(pair<int,int>(abs( arr_r[i] - arr_c[i]),arr_r[i]));
+	    }
+        int cnt = 0;
+	    for(auto x :m)
+        {
+            while(r >= x.second){
+                r = r - x.first;
+                cnt++;
+            }
+        }
+        cout<<cnt<<"\n";
 	}
 	return 0;
 }

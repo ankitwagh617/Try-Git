@@ -181,10 +181,6 @@ public:
     void display()
     {
         cout << "\n";
-        cout << "   TELEPHONE NO."
-             << "       "
-             << "NAME"
-             << "\n";
         for (int i = 0; i < size; i++)
         {
             cout << i << ".  " << ht[i].telephoneNo << "         " << ht[i].name << "\n";
